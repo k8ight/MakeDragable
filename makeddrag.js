@@ -1,4 +1,4 @@
-<script>
+
 function makeDragable( dragTarget) {
 dragElement(document.getElementById(dragTarget));
 function dragElement(elmnt) {
@@ -42,42 +42,16 @@ function dragElement(elmnt) {
   }}}
 
 
-function clse(){
-document.getElementById("tdiv").style.display = 'none';
-document.getElementById("lgdiv").style.display = 'none';
-document.getElementById("acdiv").style.display = 'none';
+function close(){
+document.getElementById("window1").style.display = 'none';
+
 window.location.replace("./");
 }
 
-function lgf(){
-	document.getElementById("login").style.display = 'block';
-	document.getElementById("regis").style.display = 'none';
+function show(){
+document.getElementById("window1").style.display = 'block';
+	
 }
 
-function regf(){
-	document.getElementById("login").style.display = 'none';
-	document.getElementById("regis").style.display = 'block';
- }
- 
-function cpwd(){
-	var psd=document.getElementById("password").value;
-	var cpsd=document.getElementById("cpassword").value;
-	 var agree = document.getElementById("agree");
-	if (psd === cpsd) {
-document.getElementById("perr").innerHTML = '';
-	document.getElementById("cperr").innerHTML = '';
-	if (agree.checked == true){
-    document.getElementById("regsub").style.display = "block";
-	document.getElementById("regsub").style.margin = "0px auto";
-  } else {
-    document.getElementById("regsub").style.display = "none";
-  }
-}
-else{
-	document.getElementById("perr").innerHTML = 'Password Does Not Match';
-	document.getElementById("cperr").innerHTML = 'Password Does Not Match';
-}}
- function shpf(){
-	 document.getElementById("acdiv").style.display = 'block';
- }
-</script>
+
+
