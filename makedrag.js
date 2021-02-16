@@ -42,14 +42,6 @@ function dragElement(elmnt) {
   }}}
 
 
-function clse(){
-document.getElementById("window1").style.display = 'none';
-}
-
-function show(){
-document.getElementById("window1").style.display = 'block';
-	
-}
 
 
 
