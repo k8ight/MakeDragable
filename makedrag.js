@@ -42,10 +42,8 @@ function dragElement(elmnt) {
   }}}
 
 
-function close(){
+function clse(){
 document.getElementById("window1").style.display = 'none';
-
-window.location.replace("./");
 }
 
 function show(){
