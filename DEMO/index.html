@@ -30,13 +30,13 @@
   <body>
    <button onclick="show()">Open Dragable window</button>
     <div id="window" class="window" style="width:400px;height:500px;top:20;left:20;position:absolute;border:5px ridge;">
-      <div class="windowhead"><span style="font:weight:900;">Window Title</span><button onclick="clse()" style="height:20px;widh:16px;float:right;clear:none;color:#ffffff;font-weight:900;background-color:red;">X</button>
+      <div class="windowhead" id="windowh"><span style="font:weight:900;">Window Title</span><button onclick="clse()" style="height:20px;widh:16px;float:right;clear:none;color:#ffffff;font-weight:900;background-color:red;">X</button>
       </div>
       <div class="windowbody" style:>Your Creation goes here....</div>
     </div>
   </body>
   <script>
-  makeDragable('window');
+  makeDragable('windowh','window');
   function clse(){
 document.getElementById("window").style.display = 'none';
 
