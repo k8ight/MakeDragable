@@ -1,47 +1,112 @@
+function makeDragable(dragHandle, dragTarget) {
 
-function makeDragable( dragTarget) {
-dragElement(document.getElementById(dragTarget));
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "h")) {
-    /* if present, the header is where you move the DIV from:*/
-    document.getElementById(elmnt.id + "h").onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    elmnt.onmousedown = dragMouseDown;
-  }
+  let dragObj = null; 
 
-  function dragMouseDown(e) {
-    e = e || window.event;
+  let xOffset = 0; 
+
+  let yOffset = 0;
+
+
+
+  document.querySelector(dragHandle).addEventListener("mousedown", startDrag, true);
+
+  document.querySelector(dragHandle).addEventListener("touchstart", startDrag, true);
+  
+
+
+  /*sets offset parameters and starts listening for mouse-move*/
+
+  function startDrag(e) {
+
     e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+
+    e.stopPropagation();
+
+    dragObj = document.querySelector(dragTarget);
+
+    dragObj.style.position = "absolute";
+
+    let rect = dragObj.getBoundingClientRect();
+
+
+
+    if (e.type=="mousedown") {
+
+      xOffset = e.clientX - rect.left; 
+
+      yOffset = e.clientY - rect.top;
+
+      window.addEventListener('mousemove', dragObject, true);
+
+    } else if(e.type=="touchstart") {
+
+      xOffset = e.targetTouches[0].clientX - rect.left;
+
+      yOffset = e.targetTouches[0].clientY - rect.top;
+
+      window.addEventListener('touchmove', dragObject, true);
+
+    }
+
   }
 
-  function elementDrag(e) {
-    e = e || window.event;
+
+
+  /*Drag object*/
+
+  function dragObject(e) {
+
     e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+    e.stopPropagation();
+
+
+  document.onmouseup = function(e) {
+
+    if (dragObj) {
+
+      dragObj = null;
+
+      window.removeEventListener('mousemove', dragObject, true);
+
+      window.removeEventListener('touchmove', dragObject, true);
+
+    }
+
+  }
+  
+    if(dragObj == null) {
+
+      return;
+
+    } else if(e.type=="mousemove") {
+
+      dragObj.style.left = e.clientX-xOffset +"px"; 
+
+      dragObj.style.top = e.clientY-yOffset +"px";
+
+    } else if(e.type=="touchmove") {
+
+      dragObj.style.left = e.targetTouches[0].clientX-xOffset +"px";
+
+      dragObj.style.top = e.targetTouches[0].clientY-yOffset +"px";
+
+    }
+
   }
 
-  function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }}}
+
+
+  /*End dragging*/
 
 
 
+}
 
 
+
+function clse(){
+document.getElementById("divID").style.display = 'none';
+
+window.location.replace("./");
+}
