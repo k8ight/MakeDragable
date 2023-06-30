@@ -8,6 +8,7 @@ See on demo folder
 repeat makedrag("dividh","divid")  for each <div>
 
 # Using MakeDrag_multi:
+```
 <style>
 .k8-box{
 z-index:50;
@@ -71,3 +72,4 @@ include script page bottom !
 add line 
 
 makeDragable(".whead");
+```
