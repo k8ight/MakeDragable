@@ -66,10 +66,9 @@ CONTENT TEXT / HTML
 <div class="wbody">
 CONTENT TEXT / HTML 
 </div></div>
-
-include script page bottom !
-
-add line 
-
+ <script type="text/javascript" src="./makedrag_multi.js">
 makeDragable(".whead");
+</script>
+
+
 ```
